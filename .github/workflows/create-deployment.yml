@@ -46,7 +46,7 @@ jobs:
         # token: ${{ github.token }}
         name: MM Second Job
         conclusion: ${{ job.status }}
-        output: |
-          {"summary":"This is my summary if failed.",
-           "text_description": "This is my text description if failed"}
+        # output: |
+        #   {"summary":"This is my summary if failed.",
+        #    "text_description": "This is my text description if failed"}
         # output_text_description_file: code-coverage-results.md
