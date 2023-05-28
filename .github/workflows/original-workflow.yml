@@ -1,0 +1,29 @@
+name: Trigger Second Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  trigger_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Trigger Workflow
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.GH_TOKEN_MM }}
+        script: |
+          github.rest.actions.createWorkflowDispatch({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            workflow_id: 'deployment.yml',
+            ref: '${{ github.head_ref }}',
+            inputs: {
+              "original_pr_number"="${{ github.event.pull_request.number }}"
+              "head_sha"="${{ github.event.pull_request.head.sha }}"
+            }
+          })
