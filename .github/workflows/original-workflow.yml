@@ -20,10 +20,10 @@ jobs:
             github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              workflow_id: 'deployment.yml',
+              workflow_id: 'dispatched-workflow.yml',
               ref: '${{ github.head_ref }}',
               inputs: {
-                "original_pr_number"="${{ github.event.pull_request.number }}"
-                "head_sha"="${{ github.event.pull_request.head.sha }}"
+                "original_pr_number": "${{ github.event.pull_request.number }}",
+                "head_sha": "${{ github.event.pull_request.head.sha }}"
               }
             })
