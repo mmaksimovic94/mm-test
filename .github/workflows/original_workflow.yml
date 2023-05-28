@@ -18,8 +18,8 @@ jobs:
           github-token: ${{ secrets.GH_TOKEN_MM }}
           script: |
             github.rest.actions.createWorkflowDispatch({
-              owner: mmaksimovic94,
-              repo: mm-test,
+              owner: "mmaksimovic94",
+              repo: "mm-test",
               workflow_id: 'dispatched_workflow.yml',
               ref: 'mm-test-checks',
               inputs: {
