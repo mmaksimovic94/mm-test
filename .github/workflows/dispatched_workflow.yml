@@ -17,6 +17,12 @@ jobs:
       - name: great name
         run: echo "Hello World!!!!!!!!!!!!"
 
+      - uses: tibdex/github-app-token@v1
+        id: get_installation_token
+        with: 
+          app_id: 339917
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
       - name: Process Pull Request
         run: |
           echo "Original PR number: ${{ github.event.inputs.original_pr_number }}"
@@ -25,7 +31,7 @@ jobs:
           # Update status or checks of the original pull request
           curl \
             -X POST \
-            -H "Authorization: Bearer ${{ secrets.GH_TOKEN_MM }}" \
+            -H "Authorization: Bearer ${{ steps.get_installation_token.outputs.token }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/mmaksimovic94/mm-test/check-runs \
             -d '{
