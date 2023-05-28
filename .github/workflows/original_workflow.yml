@@ -22,8 +22,8 @@ jobs:
               repo: "mm-test",
               workflow_id: 'dispatched_workflow.yml',
               ref: 'mm-test-checks',
-              inputs: {
-                "original_pr_number": "${{ github.event.pull_request.number }}",
-                "head_sha": "${{ github.event.pull_request.head.sha }}"
-              }
+              # inputs: {
+              #   original_pr_number: "${{ github.event.pull_request.number }}",
+              #   head_sha: "${{ github.event.pull_request.head.sha }}"
+              # }
             })
