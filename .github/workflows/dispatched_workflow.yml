@@ -2,13 +2,13 @@ name: Second Workflow
 
 on:
   workflow_dispatch:
-    # inputs:
-    #   original_pr_number:
-    #     description: 'Original PR number'
-    #     required: true
-    #   head_sha:
-    #     description: 'Head SHA'
-    #     required: true
+    inputs:
+      original_pr_number:
+        description: 'Original PR number'
+        required: true
+      head_sha:
+        description: 'Head SHA'
+        required: true
 
 jobs:
   process_pr:
@@ -17,24 +17,24 @@ jobs:
       - name: great name
         run: echo "Hello World!!!!!!!!!!!!"
 
-      # - name: Process Pull Request
-      #   run: |
-      #     echo "Original PR number: ${{ github.event.inputs.original_pr_number }}"
-      #     echo "Head SHA: ${{ github.event.inputs.head_sha }}"
+      - name: Process Pull Request
+        run: |
+          echo "Original PR number: ${{ github.event.inputs.original_pr_number }}"
+          echo "Head SHA: ${{ github.event.inputs.head_sha }}"
 
-      #     # Update status or checks of the original pull request
-      #     curl \
-      #       -X POST \
-      #       -H "Authorization: Bearer ${{ secrets.GH_TOKEN_MM }}" \
-      #       -H "Accept: application/vnd.github.v3+json" \
-      #       https://api.github.com/repos/mmaksimovic94/mm-test/check-runs \
-      #       -d '{
-      #         "name": "Check Run Test",
-      #         "head_sha": "${{ github.event.inputs.head_sha }}",
-      #         "status": "completed",
-      #         "conclusion": "success",
-      #         "output": {
-      #           "title": "Check Run Title Test",
-      #           "summary": "Check Run Summary Test"
-      #         }
-      #       }'
+          # Update status or checks of the original pull request
+          curl \
+            -X POST \
+            -H "Authorization: Bearer ${{ secrets.GH_TOKEN_MM }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/mmaksimovic94/mm-test/check-runs \
+            -d '{
+              "name": "Check Run Test",
+              "head_sha": "${{ github.event.inputs.head_sha }}",
+              "status": "completed",
+              "conclusion": "success",
+              "output": {
+                "title": "Check Run Title Test",
+                "summary": "Check Run Summary Test"
+              }
+            }'
