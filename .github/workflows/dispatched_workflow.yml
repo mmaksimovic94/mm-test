@@ -1,6 +1,7 @@
 name: Second Workflow
 
 on:
+  push:
   workflow_dispatch:
     # inputs:
     #   original_pr_number:
