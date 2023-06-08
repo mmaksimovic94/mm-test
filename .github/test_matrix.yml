@@ -2,8 +2,6 @@ name: Matrix Job Workflow
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   matrix-job:
