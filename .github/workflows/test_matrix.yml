@@ -1,0 +1,42 @@
+name: Matrix Job Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  matrix-job:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        config-path: 
+          - 'path/to/config1.yml'
+          - 'path/to/config2.yml'
+          - 'path/to/config3.yml'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run job with different config paths
+        run: |
+          echo "Running job with config path: ${{ matrix.config-path }}"
+          # Replace the command below with your actual command that uses the config.yml file
+          # For example: ./your-program --config ${{ matrix.config-path }}
+
+  cleanup-job:
+    needs: matrix-job
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        config-path: 
+          - 'cleanup-1'
+          - 'cleanup-2'
+          - 'cleanup-3'
+
+    steps:
+      - name: Clean up after matrix job
+        run: |
+          echo "Cleaning up after matrix job ${{ matrix.config-path }}"
+          # Add any cleanup steps you need here
