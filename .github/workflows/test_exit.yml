@@ -1,7 +1,7 @@
 name: Test exit
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
   test-exit:

@@ -1,0 +1,24 @@
+name: Bool Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      use_bool:
+        description: 'Use bool'
+        required: false
+        default: false
+
+jobs:
+  test-bool:
+    runs-on: windows-latest
+    steps:
+      - name: Testing bool input
+        run: |
+          if (${{ inputs.use_bool == 'true' }})
+          {
+            echo "Input is true!
+          }
+          else
+          {
+            echo "Input is false"
+          }
