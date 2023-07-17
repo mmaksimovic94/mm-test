@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Testing bool input
         run: |
-          if (${{ inputs.use_bool == 'true' }})
+          if (${{ github.event.inputs.use_bool == 'true' }})
           {
             echo "Input is true!"
           }
