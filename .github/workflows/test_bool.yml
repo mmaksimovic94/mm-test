@@ -17,7 +17,7 @@ jobs:
         run: |
           if (${{ inputs.use_bool == 'true' }})
           {
-            echo "Input is true!
+            echo "Input is true!"
           }
           else
           {
